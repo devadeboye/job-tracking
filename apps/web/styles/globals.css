@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --primary: #4a6cf7;
@@ -18,8 +18,6 @@
   --font-display: var(--font-lexend);
   --font-secondary: var(--font-inter);
 }
-
-
 
 body {
   color: var(--foreground);

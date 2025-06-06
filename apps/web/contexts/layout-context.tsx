@@ -11,45 +11,53 @@ import {
 } from "react";
 
 interface LayoutContextType {
-	isScrolled: boolean;
-	isHome: boolean;
+  isScrolled: boolean;
+  isHome: boolean;
+  isMenuOpen: boolean;
+  // setIsMenuOpen: (value: boolean) => void;
+  toggleMenu: () => void;
 }
 
 const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
 
 export function LayoutProvider({ children }: { children: ReactNode }) {
-	const [isScrolled, setIsScrolled] = useState(false);
-	const [isHome, setIsHome] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isHome, setIsHome] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	const pathname = usePathname();
-	const ticking = useRef(false);
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
-	useEffect(() => {
-		setIsHome(pathname === "/");
-	}, [pathname]);
+  const pathname = usePathname();
+  const ticking = useRef(false);
 
-	useEffect(() => {
-		if (!isHome) return; // Only add scroll event listener if on home page
+  useEffect(() => {
+    setIsHome(pathname === '/');
+  }, [pathname]);
 
-		const handleScroll = () => {
-			if (!ticking.current) {
-				window.requestAnimationFrame(() => {
-					setIsScrolled(window.scrollY > 1);
-					ticking.current = false;
-				});
-				ticking.current = true;
-			}
-		};
+  useEffect(() => {
+    if (!isHome) return; // Only add scroll event listener if on home page
 
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, [isHome]);
+    const handleScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 1);
+          ticking.current = false;
+        });
+        ticking.current = true;
+      }
+    };
 
-	return (
-		<LayoutContext.Provider value={{ isScrolled, isHome }}>
-			{children}
-		</LayoutContext.Provider>
-	);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHome]);
+
+  return (
+    <LayoutContext.Provider value={{ isScrolled, isHome, toggleMenu, isMenuOpen }}>
+      {children}
+    </LayoutContext.Provider>
+  );
 }
 
 export function useLayout() {
