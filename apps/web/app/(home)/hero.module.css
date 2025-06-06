@@ -1,0 +1,64 @@
+/* Default styles */
+.heroSection {
+  box-sizing: border-box;
+}
+
+.imageContainer {
+  position: relative;
+}
+
+/* Landscape mode styles for mobile devices */
+@media screen and (orientation: landscape) and (max-height: 600px) {
+  .heroSection {
+    min-height: 100svh;
+    padding-top: 1rem;
+  }
+
+  .contentWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0 2.5rem;
+    height: calc(100svh - 5rem);
+    margin-top: 65px;
+  }
+
+  .textContainer {
+    width: 50%;
+    height: 100%;
+    justify-content: center !important;
+    padding: 0 !important;
+    gap: 15px;
+  }
+
+  .heroTitle {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .imageWrapper {
+    width: 50%;
+    height: 100%;
+    position: relative;
+  }
+
+  .mainImage {
+    height: 70% !important;
+    margin-top: 2% !important;
+    padding-left: 4% !important;
+  }
+
+  .backdropImage {
+    height: 60% !important;
+    width: 45% !important;
+    top: -50% !important;
+    left: 8% !important;
+  }
+
+  .overlayImage {
+    height: 60% !important;
+    width: 45% !important;
+    top: -110% !important;
+    left: 4% !important;
+  }
+} 

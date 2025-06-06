@@ -1,6 +1,18 @@
 import { ButtonProps } from "../../types/button";
 import clsx from "clsx";
 
+
+/**
+ * A customizable button component that supports different variants and states
+ * @param {Object} props - The component props
+ * @param {string} props.label - The text to display inside the button
+ * @param {("button"|"submit"|"reset")} [props.type="button"] - The HTML button type
+ * @param {("primary"|"secondary"|"tertiary"|"text")} [props.variant="primary"] - The visual style variant
+ * @param {string} [props.className] - Additional CSS classes to apply
+ * @param {boolean} [props.disabled=false] - Whether the button is disabled
+ * @param {() => void} props.onClick - Click event handler
+ * @returns {JSX.Element} A styled button component
+ */
 export const Button = ({
 	label,
 	type = "button",

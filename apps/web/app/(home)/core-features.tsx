@@ -13,7 +13,7 @@ const containerVariants = {
 
 export const CoreFeatures = () => {
   return (
-    <section className="min-h-svh mx-4 flex flex-col gap-10 lg:min-h-[50rem] lg:px-16 lg:py-20 lg:w-full lg:bg-white lg:mx-0 lg:gap-0">
+    <section className="mx-4 flex flex-col gap-10 md:mx-10 lg:px-16 lg:py-20 lg:w-full lg:bg-white lg:mx-0 lg:gap-0 xl:px-20">
       <div className="w-full text-center lg:text-center lg:flex lg:flex-col lg:pb-14 xl:items-center xl:justify-center lg:gap-6 xl:pb-6">
         <h2 className="w-full text-3xl text-dark font-bold mb-4 md:text-5xl lg:text-5xl lg:font-bold lg:text-dark">
           Our Unique & Powerful Core Features

@@ -8,8 +8,8 @@ import { GetInTouch } from './get-in-touch';
 
 export const Footer = () => {
   return (
-    <footer className="lg:px-10 xl:px-16">
-      <div className="grid grid-cols-2 w-full text-left gap-4 px-5 md:grid-cols-3 md:gap-10 md:text-start lg:grid lg:grid-cols-[2fr_1fr_1fr_2fr_2fr] lg:gap-10 container border-b border-gray-200 py-20">
+    <footer className="px-5 md:px-10 lg:px-16 xl:px-20">
+      <div className="grid grid-cols-2 w-full text-left gap-4 container border-b border-gray-200 py-20 md:grid-cols-3 md:gap-10 md:text-start lg:grid lg:grid-cols-[2fr_1fr_1fr_2fr_2fr] lg:gap-10">
         <AboutUs />
 
         <Company />
