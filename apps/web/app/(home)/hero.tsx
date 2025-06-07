@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import styles from './hero.module.css';
@@ -41,7 +42,9 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="flex items-start text-nowrap gap-4 mx-5 md:mx-0 md:w-full md:justify-center lg:flex">
-            <Button className="h-12" variant="primary" label="Start for Free" onClick={() => {}} />
+            <Link href="/signup">
+              <Button className="h-12" variant="primary" label="Start for Free" />
+            </Link>
             <Button className="h-12" variant="text" label="How It Works" onClick={() => {}} />
           </div>
         </div>
