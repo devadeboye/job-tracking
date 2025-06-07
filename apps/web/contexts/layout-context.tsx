@@ -16,6 +16,7 @@ interface LayoutContextType {
   isMenuOpen: boolean;
   // setIsMenuOpen: (value: boolean) => void;
   toggleMenu: () => void;
+  closeMenu: () => void;
 }
 
 const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
@@ -27,6 +28,10 @@ export function LayoutProvider({ children }: { children: ReactNode }) {
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   const pathname = usePathname();
@@ -54,7 +59,7 @@ export function LayoutProvider({ children }: { children: ReactNode }) {
   }, [isHome]);
 
   return (
-    <LayoutContext.Provider value={{ isScrolled, isHome, toggleMenu, isMenuOpen }}>
+    <LayoutContext.Provider value={{ isScrolled, isHome, toggleMenu, closeMenu, isMenuOpen }}>
       {children}
     </LayoutContext.Provider>
   );

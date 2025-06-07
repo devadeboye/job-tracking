@@ -8,7 +8,7 @@ import { Button } from '../ui/button';
 import styles from './navbar.module.css';
 
 export const Navbar = () => {
-  const { isScrolled, isHome, isMenuOpen } = useLayout();
+  const { isScrolled, isHome, isMenuOpen, closeMenu } = useLayout();
 
   return (
     <nav
@@ -21,32 +21,38 @@ export const Navbar = () => {
       <SmallScreenNav className="lg:hidden" />
       <LargeScreenNav className="hidden" />
       {isMenuOpen && (
+        // menu
         <div
           className={`flex flex-col h-svh overflow-clip bg-white w-full items-center justify-center px-5 md:px-10 lg:hidden`}
         >
           <ul
             className={`${styles.smallScreenNavContainer} flex flex-col gap-4 h-[90%] w-full items-center justify-center`}
           >
-            <Link href="#">
+            <Link href="#" onClick={closeMenu}>
               <li>Home</li>
             </Link>
 
-            <Link href="#">
+            <Link href="#" onClick={closeMenu}>
               <li>Features</li>
             </Link>
 
-            <Link href="#">
+            <Link href="#" onClick={closeMenu}>
               <li>Pages</li>
             </Link>
 
-            <Link href="#">
+            <Link href="#" onClick={closeMenu}>
               <li>Support</li>
             </Link>
           </ul>
 
           <div className="flex flex-row gap-4 w-full h-[10%] items-center justify-center">
-            <Button label="Sign In" onClick={() => {}} className="w-full" />
-            <Button variant="secondary" label="Sign Up" onClick={() => {}} className="w-full" />
+            <Link href="/signin" className="w-full" onClick={closeMenu}>
+              <Button label="Sign In" className="w-full" />
+            </Link>
+
+            <Link href="/signup" className="w-full" onClick={closeMenu}>
+              <Button variant="secondary" label="Sign Up" className="w-full" />
+            </Link>
           </div>
         </div>
       )}

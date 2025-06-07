@@ -1,13 +1,20 @@
 import { Button } from '@/components/ui/button';
+import { useLayout } from '@/contexts/layout-context';
 import { lexend } from '@/lib/fonts';
 import { LargeScreenNavProps } from '@/types/nav';
 import Link from 'next/link';
 
 export const LargeScreenNav = ({ className }: LargeScreenNavProps) => {
+  const { closeMenu } = useLayout();
+
   return (
     <div className={`${className} lg:w-full lg:flex lg:flex-row lg:h-[80px] lg:items-center`}>
       <div className="lg:w-1/6">
-        <Link href='/' className={`${lexend.className} antialiased font-bold text-dark lg:text-3xl`}>
+        <Link
+          href="/"
+          onClick={closeMenu}
+          className={`${lexend.className} antialiased font-bold text-dark lg:text-3xl`}
+        >
           <span className="text-primary">Job</span>Nest
         </Link>
       </div>
