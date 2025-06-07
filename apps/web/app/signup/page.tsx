@@ -11,7 +11,7 @@ export default function Signup() {
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
         </div>
 
-        {/* social signup section */}
+        {/* social auth section */}
         <SocialAuth />
 
         {/* form section */}

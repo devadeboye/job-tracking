@@ -11,7 +11,7 @@ export default function Signin() {
           <p>Sign in to continue tracking your job applications</p>
         </div>
 
-        {/* social signup section */}
+        {/* social auth section */}
         <SocialAuth />
 
         {/* form section */}

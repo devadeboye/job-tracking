@@ -12,8 +12,12 @@ export default function EmailSignup() {
         <Input type="password" placeholder="Password" label="Password" />
 
         {/* terms and conditions  */}
-        <div className="flex gap-2 items-baseline">
-          <input type="checkbox" id="terms" />
+        <div className="flex gap-3 py-5 items-start">
+          <input
+            type="checkbox"
+            id="terms"
+            className="border border-gray-100 outline-none w-4 h-4 mt-1"
+          />
           <label htmlFor="terms">
             By creating an account, you agree to our{' '}
             <span className="text-primary">Terms of Service</span> and{' '}
