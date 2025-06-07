@@ -1,5 +1,5 @@
 import EmailSignup from './email-signup';
-import { SocialSignupSection } from '@/components/auth/social-signup-section';
+import { SocialAuth } from '@/components/auth/social-auth';
 
 export default function Signup() {
   return (
@@ -12,13 +12,21 @@ export default function Signup() {
         </div>
 
         {/* social signup section */}
-        <SocialSignupSection />
+        <SocialAuth />
 
         {/* form section */}
         <div className="flex flex-col gap-8">
           <h2 className="font-bold text-center">or create account with Email</h2>
           <EmailSignup />
         </div>
+
+        {/* signin link */}
+        <p className="text-center">
+          Already have an account?{' '}
+          <a href="/signin" className="text-primary">
+            Sign in
+          </a>
+        </p>
       </div>
     </div>
   );

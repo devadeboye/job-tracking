@@ -3,7 +3,7 @@ import { XAuthButton } from '@/components/auth/x-auth-button';
 import { FacebookAuthButton } from '@/components/auth/facebook-auth-button';
 import { GithubAuthButton } from '@/components/auth/github-auth-button';
 
-export function SocialSignupSection() {
+export function SocialAuth() {
   return (
     <div>
       <h2 className="text-lg text-dark">Continue with Social Accounts</h2>
