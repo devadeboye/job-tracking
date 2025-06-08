@@ -1,45 +1,49 @@
-import { ButtonProps } from '../../types/button';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import clsx from 'clsx';
 
-export const Button = ({
-  label,
-  type = 'button',
-  variant = 'primary',
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'secondary' | 'text' | 'icon';
+  label: ReactNode;
+  icon?: ReactNode;
+  iconPosition?: 'left' | 'right';
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const variants = {
+  primary: 'bg-primary text-white hover:bg-primary/90',
+  secondary: 'bg-white text-primary border border-primary hover:bg-gray-50',
+  text: 'bg-transparent text-dark hover:bg-gray-100',
+  icon: 'bg-transparent hover:bg-gray-100 p-2 rounded-full',
+};
+
+const sizes = {
+  sm: 'text-sm',
+  md: 'text-base',
+  lg: 'text-lg',
+};
+
+export function Button({
   className,
-  disabled = false,
-  onClick = () => {},
+  variant = 'primary',
+  label,
   icon,
   iconPosition = 'left',
   size = 'md',
-}: ButtonProps) => {
-  const buttonClasses = clsx(
-    `font-semibold rounded-sm transition-all duration-300 ease-in-out ${className}`,
-    {
-      // Size variants
-      'px-6 py-2 lg:h-[48px]': size === 'md' && variant !== 'icon',
-      'px-4 py-1 text-sm': size === 'sm' && variant !== 'icon',
-      'px-8 py-3 text-lg': size === 'lg' && variant !== 'icon',
-      'p-2': variant === 'icon' && size === 'sm',
-      'p-3': variant === 'icon' && size === 'md',
-      'p-4': variant === 'icon' && size === 'lg',
-
-      // Color variants
-      'bg-primary text-white hover:bg-primary/90': variant === 'primary' && !disabled,
-      'bg-light-dark text-white hover:bg-light-dark/90': variant === 'secondary' && !disabled,
-      'bg-white text-white hover:bg-white/90': variant === 'tertiary' && !disabled,
-      'text-dark border-0 hover:text-primary': variant === 'text' && !disabled,
-      'bg-transparent hover:bg-gray-100': variant === 'icon' && !disabled,
-      'bg-gray-300 text-gray-500 cursor-not-allowed': disabled,
-
-      // Icon positioning classes
-      'flex items-center gap-2': icon && variant !== 'icon',
-      'flex-row-reverse': icon && iconPosition === 'right' && variant !== 'icon',
-    }
-  );
+  ...props
+}: ButtonProps) {
+  const isIconButton = variant === 'icon';
 
   return (
-    <button className={buttonClasses} type={type} onClick={onClick} disabled={disabled}>
-      {variant === 'icon' ? (
+    <button
+      className={clsx(
+        !isIconButton && 'px-6 py-3 rounded-md transition-colors duration-200',
+        variants[variant],
+        sizes[size],
+        className
+      )}
+      {...props}
+    >
+      {isIconButton ? (
         icon
       ) : (
         <>
@@ -50,4 +54,4 @@ export const Button = ({
       )}
     </button>
   );
-};
+}
